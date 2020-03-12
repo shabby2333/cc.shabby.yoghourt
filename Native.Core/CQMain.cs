@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
+using Native.Sdk.Cqp.Interface;
+using Cc.Shabby.Yoghourt.Code.Event;
+
 namespace Native.Core
 {
 	/// <summary>
@@ -18,7 +21,11 @@ namespace Native.Core
 		/// <param name="container">用于注册的 IOC 容器 </param>
 		public static void Register (IUnityContainer unityContainer)
 		{
-			
+			unityContainer.RegisterType<IAppEnable, Event_AppEnable>("应用已被启用");
+			unityContainer.RegisterType<IGroupMessage, Event_Message>("群消息处理");
+			unityContainer.RegisterType<IPrivateMessage, Event_Message>("私聊消息处理");
+
+
 		}
 	}
 }
